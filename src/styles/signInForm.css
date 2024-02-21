@@ -1,0 +1,56 @@
+.signin-section {
+    border-radius: 4px;
+    height: 100%;
+    padding: 40px;
+    /* background-color: #90e2f7; */
+}
+
+.signin-section .image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.signin-section .form .signin-form .username-field .username-input,
+.signin-section .form .signin-form .email-field .email-input,
+.signin-section .form .signin-form .password-field .password-input,
+.signin-section .form .signin-form .confirmpassword-field .confirmpassword-input,
+.signin-section .form .signin-form .capcha-field .capcha-input {
+    width: 100%;
+    border: 2px solid #025305;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-block: 5px;
+}
+
+.form {
+    width: 40%;
+    background-color: #b44d39;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.form.register{
+    background-color: #977345;
+}
+.signin-section .form .signin-form {
+    margin: auto;
+    border: 1px solid #0000000a;
+    border-radius: 4px;
+    background-color: white;
+
+}
+
+#canv {
+    border: 1px solid #025305;
+    border-radius: 4px;
+    width: 150px;
+    height: 30px;
+}
+
+.signin-section .form .signin-form .signin-btn {
+    background-color: #025305;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 4px;
+}

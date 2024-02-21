@@ -1,0 +1,125 @@
+.product-cards {
+    border: 2px solid rgba(0, 0, 0, 0.279);
+    border-radius: 4px;
+}
+
+.product-cards .title-div {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.334);
+}
+
+.product-cards .title-div .icon {
+    color: #f7be04;
+    font-size: 36px;
+}
+
+.product-cards .title-div .arrow {
+    color: #1F51FF;
+    font-size: 33px;
+}
+
+.product-cards .title-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-cards .title-div .title {
+    color: #025305;
+}
+
+.product-cards .cards-div .card {
+    border: 1px solid rgba(0, 0, 0, 0.223);
+    border-radius: 4px;
+    overflow: hidden;
+
+}
+
+.product-cards .cards-div .card .image-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-cards .cards-div .card .image-section img {
+    width: 100%;
+    min-height: 30vh;
+    max-height: 30vh;
+    border-bottom: 1px solid #0253056a;
+    object-fit: contain;
+}
+
+.product-cards .cards-div .card .image-section img:hover {
+    transform: scale(1.1);
+}
+
+.product-cards .cards-div .card .image-section .wishlist {
+    position: absolute;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    top: 10px;
+    right: 10px;
+}
+
+.product-cards .cards-div .card .image-section .wishlist:hover {
+    transform: scale(1.2);
+}
+
+.product-cards .cards-div .card .image-section .wishlist.true {
+    color: #f6345b;
+}
+
+.product-cards .cards-div .card .card-details {
+    background-color: #6ab96d0c;
+}
+
+.product-cards .cards-div .card .card-details .price-details .discount .text {
+
+    color: whitesmoke;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    background: linear-gradient(to right, #f47a93, #DC143C, #DC143C);
+}
+
+.product-cards .card .card-details .card-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    min-height: 60px;
+}
+
+.product-cards .card .card-details .bottom-card .rating {
+    background: linear-gradient(to right, #34c039, #025305, #025305);
+    color: whitesmoke;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.product-cards .card .card-details .bottom-card .add-cart {
+    background: linear-gradient(to right, #e5cd7f, #f7be04);
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.product-cards .card .card-details .bottom-card .add-cart:hover {
+    transform: scale(1.1);
+}
+
+.product-cards .bottom .text {
+    border: 2px solid #025305b3;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.product-cards .bottom .text:hover {
+    transition: all 0.2s ease-in-out;
+    color: #1F51FF;
+}
+
+.product-cards .bottom {
+    border-top: 1px solid rgba(0, 0, 0, 0.24);
+}

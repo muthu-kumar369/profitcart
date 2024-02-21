@@ -1,0 +1,61 @@
+.wishlist-folder {
+    color: #025305;
+    border: 1px solid #025305;
+}
+
+.wishlist-folder .header {
+    border-bottom: 1px solid #02530584;
+}
+
+.wishlist-folder .folder {
+    background-color: #0253052b;
+    border-radius: 4px;
+
+}
+
+.folder-form {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.079);
+    z-index: 10;
+}
+
+.folder-form .form-details {
+    width: 35%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #025305;
+    background-color: white;
+    border-radius: 4px;
+    max-height: 70vh;
+    overflow-y: scroll  ;
+}
+.folder-form .form-details::-webkit-scrollbar{
+    width: 0;
+}
+.folder-form .form-details  .input{
+    width: 100%;
+}
+.folder-form .btn-group .cancel{
+    border-radius: 4px;
+}
+.folder-form .btn-group .submit {
+    background-color: #025305;
+    border-radius: 4px;
+}
+
+@media only screen and (max-width:768px){
+    .folder-form .form-details {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width:468px){
+    .folder-form .form-details {
+        width: 85%;
+    }
+}

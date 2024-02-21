@@ -1,0 +1,31 @@
+.empty-signin{
+    height: 87vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #02530517;
+    margin-inline: 5%;
+    border-radius: 5px;
+}
+.empty-signin .title{
+    font-weight: 700;
+    color: #025305;
+}
+.empty-signin .btn-div{
+
+}
+.empty-signin .btn-div .signin{
+    border: 1px solid #7fb9d6df;
+    font-weight: 600;
+    background: linear-gradient(to right,#7fb9d6df,#4aa1cddf,#0f81badf);
+    color: rgba(0, 0, 0, 0.775);
+    border-radius: 4px;
+}
+.empty-signin .btn-div .signup{
+    border: 1px solid black;
+    border: 1px solid #7fb9d6df;
+    font-weight: 600;
+    background: linear-gradient(to right,#ffffffb9,#ffffffa9,#ffffff78);
+    color: rgba(0, 0, 0, 0.775);
+    border-radius: 4px;
+}

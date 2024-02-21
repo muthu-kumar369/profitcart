@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../src/styles/navbar.css";
+@import "../src//styles/bannerSlider.css";
+@import "../src//styles/signInForm.css";
+@import "../src//styles/productCards.css";
+@import "../src//styles/searchProductCard.css";
+@import "../src//styles/productDetails.css";
+@import "../src//styles/emptySingin.css";
+@import "../src//styles//wishlistFolder.css";
+@import "../src//styles/wishlistForm.css";
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+label {
+  font-weight: 600;
+  color: #025305;
+}
+
+.error {
+  font-weight: 500;
+  color: red;
+  font-size: 12px;
+}
+
+.buy-now {
+  background: linear-gradient(to top, #26a92a, #025305, #025305);
+  border-radius: 4px;
+  font-weight: 500;
+  color: whitesmoke;
+}
+
+.buy-now:hover {
+  transform: scale(1.1);
+}
+
+a,
+button {
+  font-family: serif;
+  font-weight: 600;
+}
+
+.account-value {
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: auto;
+}
+
+.star {
+  color: red;
+}
+
+.discount.design {
+  color: whitesmoke;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  background: linear-gradient(to right, #f47a93, #DC143C, #DC143C);
+}

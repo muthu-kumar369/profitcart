@@ -1,0 +1,68 @@
+.wishlist-form {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.197);
+    z-index: 10;
+}
+
+.wishlist-form .select {
+    width: 35%;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #02530548;
+    border-radius: 4px;
+}
+
+.wishlist-form .select .header {
+    color: #025305;
+    border-bottom: 1px solid #025305;
+}
+
+.wishlist-form .select .body-content .content{
+    border-radius: 4px;
+    transition: all 0.1s ease-in-out;
+}
+.wishlist-form .select .body-content .content:hover{
+    background-color: #02530512;
+}
+.wishlist-form .select .body-content .content.active {
+    background-color: #0253052b;
+}
+
+.wishlist-form .select .body-content .content .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #025305;
+}
+.wishlist-form .select .body-content .content.active .dot{
+background-color: #025305;
+}
+.wishlist-form .select .body-content .content .name {}
+
+
+.wishlist-form .select .btn-grp .add {
+    background-color: #025305;
+}
+
+.wishlist-form .select .btn-grp .cancel:hover,
+.wishlist-form .select .btn-grp .add:hover{
+    transform: scale(1.1);
+}
+@media only screen and (max-width:768px){
+    .wishlist-form .select {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width:468px){
+    .wishlist-form .select {
+        width: 90%;
+    }
+}

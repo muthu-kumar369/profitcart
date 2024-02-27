@@ -44,7 +44,7 @@ function PurchaseProduct({ params }) {
             }
         } else {
             addressDetails = res?.data?.address.filter(data => data.default == true);
-            if (addressDetails) {
+            if (Object.keys(addressDetails).length!=0) {
                 setAddress(addressDetails[0]);
                 setAddressId(addressDetails[0]._id);
             }
@@ -104,7 +104,8 @@ function PurchaseProduct({ params }) {
         }else if(paymentType=="card"){
             let data={
                 pricingDetails,
-                token
+                token,
+                addressId
             }
             console.log(data);
             const res=await GetSession(data);
@@ -117,6 +118,7 @@ function PurchaseProduct({ params }) {
     }
     let state = {
         setAddressForm,
+        addressId,
         setAddressId,
         paymentType,
         setPaymentType

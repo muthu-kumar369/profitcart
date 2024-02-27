@@ -74,7 +74,7 @@ function PurchaseProduct() {
             }
         } else {
             addressDetails = res?.data?.address.filter(data => data.default == true);
-            if (addressDetails) {
+            if (Object.keys(addressDetails).length!=0) {
                 setAddress(addressDetails[0]);
                 setAddressId(addressDetails[0]._id);
             }
@@ -156,6 +156,7 @@ function PurchaseProduct() {
     }
     let state = {
         setAddressForm,
+        addressId,
         setAddressId,
         paymentType,
         setPaymentType

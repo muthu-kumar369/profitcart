@@ -80,3 +80,18 @@ export const CreateBulkOrder=async(data)=>{
         return error?.response?.data;
     }
 }
+export const GetOrderProduct=async(data)=>{
+    try {
+        
+        const res=await axios({
+            method:"get",
+            url:`${process.env.backend_domain}/order/get-product/${data?.orderId}/${data?.productId}`,
+            headers:{
+                Authorization:data?.token
+            }
+        })
+        return res?.data;
+    } catch (error) {
+        return error?.response?.data;
+    }
+}

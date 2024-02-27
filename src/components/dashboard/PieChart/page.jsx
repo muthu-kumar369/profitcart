@@ -31,7 +31,7 @@ function PieChartComponent({ data }) {
                             paddingAngle={3}
                             radius={pieChartDefaultProps.radius - shiftSize}
                             segmentsShift={(index) => (index === indexValue ? shiftSize : 0)}
-                            label={({ dataEntry }) => `${dataEntry.value==1 ? 0: dataEntry.value} `}
+                            label={({ dataEntry }) => `${dataEntry.value==1 ? 0: dataEntry.value-1} `}
                             labelStyle={(index) => ({
                                 fill: "white",
                                 fontSize: '5px',
@@ -59,7 +59,7 @@ function PieChartComponent({ data }) {
                     })}
                 </div>
             </div>
-            <p className="value uppercase font-bold text-center text-lg text-emerald-900 py-4">{data[indexValue].title} Prodcuts count : {data[indexValue].value}</p>
+            <p className="value uppercase font-bold text-center text-lg text-emerald-900 py-4">{data[indexValue].title} Prodcuts count : {data[indexValue].value==1 ? 0 :data[indexValue].value-1}</p>
         </section>
     )
 }

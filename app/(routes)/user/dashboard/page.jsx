@@ -3,7 +3,7 @@ import { getCartDetails } from '@/app/api/cartAPI';
 import { getWishlist } from '@/app/api/wishlistAPI';
 import { checkToken } from '@/redux/actions/authActions';
 import { login, logout } from '@/redux/reducers/authReducers';
-import { cartPrdouctIdsAction, wishlistAction, wishlistProdcutIdsAction } from '@/redux/reducers/productReducers';
+import { cartPrdouctIdsAction, totalOrderedProductAction, totalReturnProductAction, wishlistAction, wishlistProdcutIdsAction } from '@/redux/reducers/productReducers';
 import AccountDetails from '@/src/components/dashboard/AccountDetails/page';
 import PieChartComponent from '@/src/components/dashboard/PieChart/page';
 import { useRouter } from 'next/navigation';
@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaHome , FaHeart,FaRegAddressCard  } from "react-icons/fa";
 import {  PiPackageBold } from "react-icons/pi";
 import EmptySingnIn from '@/src/components/EmptySingnIn/page';
+import { GetOrderList } from '@/app/api/odersAPI';
 
 
 function Dashboard() {
@@ -19,12 +20,13 @@ function Dashboard() {
   const dispatch = useDispatch();
   const router = useRouter();
   const {isAuthtenticate,userDetails,token } = useSelector(state => state.auth);
-  const { cartPrdouctIds, wishlistProdcutIds } = useSelector(state => state.product);
+  const { cartPrdouctIds, wishlistProdcutIds,totalOrderedProduct,totalReturnProduct } = useSelector(state => state.product);
+  console.log(totalOrderedProduct,totalReturnProduct);
   let chartData= [
-      { title: 'Ordered', value: 10, color: '#025305' },
-      { title: 'Cart', value: cartPrdouctIds ? cartPrdouctIds.length : 1, color: '#E38627' },
-      { title: 'Wishlist', value:wishlistProdcutIds? wishlistProdcutIds.length :0, color: '#FF3131' },
-      { title: 'Return', value: 5, color: '#D22B2B' },
+      { title: 'Ordered', value: totalOrderedProduct ? totalOrderedProduct+1 :1, color: '#025305' },
+      { title: 'Cart', value: cartPrdouctIds ? cartPrdouctIds.length+1 : 1, color: '#E38627' },
+      { title: 'Wishlist', value:wishlistProdcutIds ?wishlistProdcutIds.length+1 :1, color: '#FF3131' },
+      { title: 'Return', value: totalReturnProduct? totalReturnProduct+1 :1, color: '#D22B2B' },
   
     ]
 
@@ -89,11 +91,24 @@ function Dashboard() {
       dispatch(wishlistProdcutIdsAction(res?.data?.productIds))
     }
   }
-
+  const handleOrderData=async()=>{
+    if(token){
+      const res=await GetOrderList({
+        page:1,
+        size:100,
+        token
+      });
+      if(res?.status==process.env.success){
+        dispatch(totalOrderedProductAction(res?.data?.totalOrderedProduct));
+        dispatch(totalReturnProductAction(res?.data?.totalReturnProduct))
+      }
+    }
+  }
   useEffect(() => {
     handleToken();
     handleCartData();
     handleWishlistData();
+    handleOrderData();
   }, [token])
   return (
     <>

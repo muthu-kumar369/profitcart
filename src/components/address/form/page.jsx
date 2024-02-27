@@ -2,7 +2,7 @@ import React, {  useState } from 'react';
 
 function AddressForm({data,state,page,api}) {
     const [indexValue, setIndexValue] = useState();
-    const [id, setId] = useState();
+    const [id, setId] = useState(state.addressId);
     const [error,setError]=useState();
 
     const handleClick = (addressId, index) => {
@@ -36,7 +36,7 @@ function AddressForm({data,state,page,api}) {
             {data && data.map((item, index) => {
                 return (
                     <>
-                        <div className={`content flex items-center cursor-pointer my-4 px-4 py-2 ${indexValue == index ? "active" : ""}`} key={index} onClick={() => handleClick(item?._id, index)}>
+                        <div className={`content flex items-center cursor-pointer my-4 px-4 py-2 ${indexValue == index ? "active" : ""}  ${id==item?._id ? "active":""} `} key={index} onClick={() => handleClick(item?._id, index)}>
                             <p className="dot"></p>
                             <p className='name text-lg px-6'>Address {index+1}</p>
                         </div>

@@ -8,7 +8,9 @@ const initialState={
     search:null,
     cartPrdouctIds:null,
     wishlistProducts:null,
-    wishlistProdcutIds:null
+    wishlistProdcutIds:null,
+    totalOrderedProduct:null,
+    totalReturnProduct:null
 
 }
 
@@ -39,10 +41,28 @@ export const productSlice=createSlice({
         },
         wishlistProdcutIdsAction: (state, payload) => {
             state.wishlistProdcutIds=payload?.payload
+        },
+        totalOrderedProductAction:(state,payload)=>{
+            console.log(payload);
+            state.totalOrderedProduct=payload?.payload
+        },
+        totalReturnProductAction:(state,payload)=>{
+            state.totalReturnProduct=payload?.payload
         }
     }
 
 })
 
-export const {topDiscountAction,comboAction,brandAction,typeWearAction,searchAction, cartPrdouctIdsAction,wishlistAction,wishlistProdcutIdsAction}=productSlice.actions;
+export const {
+    topDiscountAction,
+    comboAction,
+    brandAction,
+    typeWearAction,
+    searchAction, 
+    cartPrdouctIdsAction,
+    wishlistAction,
+    wishlistProdcutIdsAction,
+    totalOrderedProductAction,
+    totalReturnProductAction
+}=productSlice.actions;
 export default productSlice.reducer;

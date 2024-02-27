@@ -50,6 +50,8 @@ function PaymentStatus({ params }) {
           setRedirect(true);
         }
       }
+    }else{
+      setRedirect(true)
     }
   }
   useEffect(() => {

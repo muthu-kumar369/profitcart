@@ -12,6 +12,14 @@
 @import "../src//styles//wishlistFolder.css";
 @import "../src//styles/wishlistForm.css";
 
+html{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  
+}
+html::-webkit-scrollbar{
+  display: none;
+}
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }

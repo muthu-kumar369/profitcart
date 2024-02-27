@@ -64,33 +64,49 @@ function CartPayment({ data, address, state, api, overAllData }) {
           <div className="header py-4 border border-r-0 border-l-0 border-t-0 border-emerald-700">
             <p className="title px-10 font-bold text-lg uppercase text-emerald-900 ">Address </p>
           </div>
-          <div className="address-details px-10 py-2 m-10 border border-gray-300">
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.name} ,</span></p>
-            </div>
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.firstLine} ,</span></p>
-            </div>
-            {address?.secondLine && <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.secondLine} ,</span></p>
-            </div>}
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.city} ,</span></p>
-            </div>
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.state} ,</span></p>
-            </div>
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.country} ,</span></p>
+          {address ? (
+            <>
+              <div className="address-details px-10 py-2 m-10 border border-gray-300">
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.name} ,</span></p>
+                </div>
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.firstLine} ,</span></p>
+                </div>
+                {address?.secondLine && <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.secondLine} ,</span></p>
+                </div>}
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.city} ,</span></p>
+                </div>
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.state} ,</span></p>
+                </div>
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.country} ,</span></p>
+                </div>
+
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span className="mr-2">{address?.phoneCode}</span><span>{address?.phone} .</span></p>
+                </div>
+              </div>
+              <div className="change-adress mx-10 mb-5">
+                <button className='p-2 bg-emerald-900 text-white rounded-sm' onClick={() => state.setAddressForm(true)}>Change Address</button>
+              </div>
+            </>
+          ) : <>
+            <div className='no-details grid items-center min-h-56'>
+              <div>
+                <div className='flex items-center justify-center'>
+                  <p className='font-semibold capitalize text-xl py-5'>Please add address</p>
+                </div>
+                <div className="change-adress mx-10 mb-5 flex items-center justify-center">
+                  <Link href={"/user/address"} className='p-2 bg-emerald-900 text-white rounded-sm'>Add Address</Link>
+                </div>
+              </div>
             </div>
 
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span className="mr-2">{address?.phoneCode}</span><span>{address?.phone} .</span></p>
-            </div>
-          </div>
-          <div className="change-adress mx-10 mb-5">
-            <button className='p-2 bg-emerald-900 text-white rounded-sm' onClick={() => state.setAddressForm(true)}>Change Address</button>
-          </div>
+          </>}
         </div>
         <div className="payment-type my-4 border border-emerald-900 rounded-sm bg-gray-5">
           <div className="header py-4 border border-r-0 border-l-0 border-t-0 border-emerald-700">

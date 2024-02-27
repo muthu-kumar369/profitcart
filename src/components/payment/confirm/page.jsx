@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 
-function ConfirmPayment({ data, address, state,api }) {
+function ConfirmPayment({ data, address, state, api }) {
   const [deliveryCharge, setDeliveryCharge] = useState();
   const [totalAmount, setTotalAmount] = useState();
   const [savingAmount, setSavingAmount] = useState();
@@ -19,16 +19,16 @@ function ConfirmPayment({ data, address, state,api }) {
     setSavingAmount(parseInt(actualAmount) - totalAmount);
   }
 
-  const handleSession=()=>{
+  const handleSession = () => {
     api.handleSession();
   }
-  
+
   useEffect(() => {
     calculateDeliveryCharge();
-    if(totalAmount){
+    if (totalAmount) {
       api.handlePricing(totalAmount);
     }
-  },[totalAmount]);
+  }, [totalAmount]);
   return (
     <>
       <section className="search-product m-5 lg:mx-28">
@@ -61,45 +61,61 @@ function ConfirmPayment({ data, address, state,api }) {
           <div className="header py-4 border border-r-0 border-l-0 border-t-0 border-emerald-700">
             <p className="title px-10 font-bold text-lg uppercase text-emerald-900 ">Address </p>
           </div>
-          <div className="address-details px-10 py-2 m-10 border border-gray-300">
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.name} ,</span></p>
-            </div>
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.firstLine} ,</span></p>
-            </div>
-            {address?.secondLine && <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.secondLine} ,</span></p>
-            </div>}
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.city} ,</span></p>
-            </div>
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.state} ,</span></p>
-            </div>
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.country} ,</span></p>
+          {address ? (
+            <>
+              <div className="address-details px-10 py-2 m-10 border border-gray-300">
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.name} ,</span></p>
+                </div>
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.firstLine} ,</span></p>
+                </div>
+                {address?.secondLine && <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.secondLine} ,</span></p>
+                </div>}
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.city} ,</span></p>
+                </div>
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.state} ,</span></p>
+                </div>
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span>{address?.country} ,</span></p>
+                </div>
+
+                <div className="details  my-1">
+                  <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span className="mr-2">{address?.phoneCode}</span><span>{address?.phone} .</span></p>
+                </div>
+              </div>
+              <div className="change-adress mx-10 mb-5">
+                <button className='p-2 bg-emerald-900 text-white rounded-sm' onClick={() => state.setAddressForm(true)}>Change Address</button>
+              </div>
+            </>
+          ) : <>
+            <div className='no-details grid items-center min-h-56'>
+              <div>
+                <div className='flex items-center justify-center'>
+                  <p className='font-semibold capitalize text-xl py-5'>Please add address</p>
+                </div>
+                <div className="change-adress mx-10 mb-5 flex items-center justify-center">
+                  <Link href={"/user/address"} className='p-2 bg-emerald-900 text-white rounded-sm'>Add Address</Link>
+                </div>
+              </div>
             </div>
 
-            <div className="details  my-1">
-              <p className="value lg:col-span-7 flex font-semibold text-emerald-900"><span className="mr-2">{address?.phoneCode}</span><span>{address?.phone} .</span></p>
-            </div>
-          </div>
-          <div className="change-adress mx-10 mb-5">
-            <button className='p-2 bg-emerald-900 text-white rounded-sm' onClick={() => state.setAddressForm(true)}>Change Address</button>
-          </div>
+          </>}
         </div>
         <div className="payment-type my-4 border border-emerald-900 rounded-sm bg-gray-5">
           <div className="header py-4 border border-r-0 border-l-0 border-t-0 border-emerald-700">
             <p className="title px-10 font-bold text-lg uppercase text-emerald-900 ">Payment type </p>
-          </div> 
+          </div>
           <div className="details md:flex justify-evenly">
-            <div className={`flex items-center m-3 p-3 px-6 border bg-gray-200 rounded-md cursor-pointer ${state.paymentType=="card" ? "bg-gray-400":"hover:bg-gray-300 "}`} onClick={()=>state.setPaymentType("card")}>
-              <div className={`dot w-3 h-3 border border-emerald-900 rounded-full ${state.paymentType=="card" ? "bg-white":""}`}></div>
+            <div className={`flex items-center m-3 p-3 px-6 border bg-gray-200 rounded-md cursor-pointer ${state.paymentType == "card" ? "bg-gray-400" : "hover:bg-gray-300 "}`} onClick={() => state.setPaymentType("card")}>
+              <div className={`dot w-3 h-3 border border-emerald-900 rounded-full ${state.paymentType == "card" ? "bg-white" : ""}`}></div>
               <p className="value ps-3">Card</p>
             </div>
-            <div className={`flex items-center m-3 p-3 px-6 bg-gray-200 rounded-md cursor-pointer  ${state.paymentType=="cashondelivery" ? "bg-gray-400":"hover:bg-gray-300"}`} onClick={()=>state.setPaymentType("cashondelivery")}>
-              <div className={`dot w-3 h-3 border border-emerald-900 rounded-full  ${state.paymentType=="cashondelivery" ? "bg-white":""}`}></div>
+            <div className={`flex items-center m-3 p-3 px-6 bg-gray-200 rounded-md cursor-pointer  ${state.paymentType == "cashondelivery" ? "bg-gray-400" : "hover:bg-gray-300"}`} onClick={() => state.setPaymentType("cashondelivery")}>
+              <div className={`dot w-3 h-3 border border-emerald-900 rounded-full  ${state.paymentType == "cashondelivery" ? "bg-white" : ""}`}></div>
               <p className="value px-3">Cash on delivery</p>
             </div>
           </div>
@@ -148,7 +164,7 @@ function ConfirmPayment({ data, address, state,api }) {
             </div>
           </div>
           <div className="btn-div buy-now mx-5">
-            <button className='px-6 py-2' onClick={()=>{handleSession()}}>Buy now</button>
+            <button className='px-6 py-2' onClick={() => { handleSession() }}>Buy now</button>
           </div>
         </div>
 

@@ -119,7 +119,7 @@ function AddressComponent({ data, api,state }) {
     console.log(states);
     return (
         <>
-            <section className="wishlist-folder mx-10 lg:mx-28 mt-6 rounded-sm">
+            <section className="wishlist-folder mx-10 lg:mx-28 mt-6 rounded-sm ">
                 <div >
                     <div className="header block md:flex justify-between items-center py-5 px-9">
                         <p className="title capitalize font-bold text-xl  font-sans">Your Address</p>
@@ -128,7 +128,8 @@ function AddressComponent({ data, api,state }) {
                             <button className="add-folder text-2xl md:text-4xl font-bold ml-5" onClick={() => handleCreate()} >+</button>
                         </div>
                     </div>
-                    <div>
+                    {data?.address.length!=0 ? (
+                        <div>
                         {data && data?.address.map((item, index) => {
                             return (
                                 <>
@@ -173,6 +174,11 @@ function AddressComponent({ data, api,state }) {
                             )
                         })}
                     </div>
+                    ):
+                    <div className='no-details flex items-center justify-center min-h-96'>
+                            <p className='font-semibold capitalize text-xl py-5'>Address didn't added!</p>
+                        </div>
+                    }
                 </div>
 
             </section>
